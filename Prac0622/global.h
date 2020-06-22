@@ -12,6 +12,7 @@ extern InputManager inputManager;
 
 extern ID3DXFont* g_pFont;
 
+extern float deltaTime;
 extern Player player;
 
 #define WINDOW_WIDTH 640

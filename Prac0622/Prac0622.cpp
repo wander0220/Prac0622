@@ -28,6 +28,9 @@ Player player;
 
 ID3DXFont* g_pFont;
 
+DWORD prevTime;
+float deltaTime = 0.3f;
+
 HRESULT InitD3D(HWND hWnd)
 {
     if (NULL == (g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)))
@@ -63,6 +66,7 @@ void InitMyStuff() {
     textureManager.LoadTexture(L"player/player1.png", 200);
     /*D3DXCreateSprite(g_pd3dDevice, &g_pTextSprite);
     D3DXCreateTextureFromFile(g_pd3dDevice, L"banana.bmp", &g_pTexture);*/
+    prevTime = GetTickCount();
 }
 void EngineUpdate() {
     if (inputManager.keyBuffer[VK_ESCAPE] == 1) {
@@ -73,6 +77,15 @@ void EngineUpdate() {
 }
 VOID EngineRender()
 {
+
+    DWORD curr = GetTickCount();
+    DWORD diff = curr - prevTime;
+    deltaTime = diff / 1000.0f;
+    if (deltaTime > 0.016) {
+        deltaTime = 0.016;
+    }
+    prevTime = curr;
+
     RECT rc;
     rc.left = 0;
     rc.top = 0;
