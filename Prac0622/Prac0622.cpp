@@ -106,9 +106,13 @@ VOID EngineRender()
         rec.top = 40;
         rec.right = 100;
         rec.bottom = 100;
+
+        WCHAR buffer[128];
+        int i = 23;
+        swprintf_s(buffer, L"김수현 : %d", i);
         
         g_pFont->DrawText(NULL,
-            L"These multiple calls to ID3DXFont::DrawText() using the same ID3DXSprite.", -1, &rec,
+            buffer, -1, &rec,
             DT_NOCLIP, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 
